@@ -1,11 +1,10 @@
 <?php
 	require("../conn.php");
 	
-<<<<<<< HEAD
+
 	date_default_timezone_set("PRC");
 	
-=======
->>>>>>> 2732d631a629d631d62f4410fe651b31f93b7fc6
+
 	$lat=$_POST["lat"]; //纬度
 	$longt=$_POST["longt"]; //经度
 	$phone=$_POST["phone"];
