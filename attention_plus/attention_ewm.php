@@ -52,9 +52,10 @@
 					
 		$json = '['.$sqldate.$otherdate.']';
 	}else if($flag=="select"){
-		$qdTime=$_POST["qdTime"];
+//		$qdTime=$_POST["qdTime"];
+		$new_date = date("Y-m-d");
 		//签到状态信息验证
-		$sql = "select * from 人员签到 where 签到时间 like '".$qdTime."%' and 工程id='".$gcid."' and 联系方式='".$sji."'";
+		$sql = "select * from 人员签到 where 签到时间 like '".$new_date."%' and 工程id='".$gcid."' and 联系方式='".$sji."'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 			$jsonresult='OK';
@@ -66,6 +67,7 @@
 				}';
 	}else if($flag=="update"){
 		$qdTime=$_POST["qdTime"];
+		$lt = $_POST['lt'];//经纬度
 		//签到信息录入
 		$qdzt="已签到";
 		$sql = "select * from 人员签到 where 时间戳='".$sjc."'";
@@ -73,7 +75,7 @@
 		if ($result->num_rows > 0) {
 			$jsonresult='1';
 		} else {
-			$sqli = "insert into 人员签到 (工程id,工程名称,人员,签到时间, 时间戳,联系方式,记录插入时间, 签到状态,部门) values ('$gcid','$gcmc','$xm','$qdTime','$sjc','$sji','$timestr','$qdzt','$bumen')";
+			$sqli = "insert into 人员签到 (工程id,工程名称,人员,签到时间, 时间戳,联系方式,记录插入时间, 签到状态,部门,经纬度) values ('$gcid','$gcmc','$xm','$qdTime','$sjc','$sji','$timestr','$qdzt','$bumen','$lt')";
 			if ($conn->query($sqli) === TRUE) {
 				$jsonresult='success';
 			} else {
