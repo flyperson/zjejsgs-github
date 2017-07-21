@@ -52,9 +52,10 @@
 					
 		$json = '['.$sqldate.$otherdate.']';
 	}else if($flag=="select"){
-		$qdTime=$_POST["qdTime"];
+//		$qdTime=$_POST["qdTime"];
+		$new_date = date("Y-m-d");
 		//签到状态信息验证
-		$sql = "select * from 人员签到 where 签到时间 like '".$qdTime."%' and 工程id='".$gcid."' and 联系方式='".$sji."'";
+		$sql = "select * from 人员签到 where 签到时间 like '".$new_date."%' and 工程id='".$gcid."' and 联系方式='".$sji."'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 			$jsonresult='OK';
