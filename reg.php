@@ -41,7 +41,7 @@
 					if ($result->num_rows > 0) {
 						$jsonresult='2';
 					} else{
-						$sqli = "insert into 用户信息 (账号,密码,邮箱,手机,设备,部门,姓名) values ('$account', '$password', '$email', '$shji','$equipment','$bmxz','$ximi')";
+						$sqli = "insert into 用户信息 (账号,密码,邮箱,手机,设备,部门,姓名,权限) values ('$account', '$password', '$email', '$shji','$equipment','$bmxz','$ximi','整改通知单编号维护,1||用户管理维护,2||')";
 						if ($conn->query($sqli) === TRUE) {
 							$jsonresult='success';
 						} else {
